@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLOF Monitoring System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .dropdown-menu {
+            background-color: #2c3e50;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .dropdown-item {
+            color: #ecf0f1;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .dropdown-item:hover {
+            background-color: #34495e;
+            color: #ffffff;
+        }
+        .navbar-dark .navbar-nav .nav-link {
+            color: #ecf0f1;
+        }
+        .navbar-dark .navbar-nav .nav-link:hover {
+            color: #ffffff;
+        }
+
+        /* Darker text for the content section */
+        .container {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            color: #333; /* Darker text color */
+            background-color: rgba(255, 255, 255, 0.7); /* Optional: adds a semi-transparent background */
+            border-radius: 10px;
+        }
+
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1d9d74;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #333; /* Darker text color */
+        }
+
+        /* Optional: Dark background for footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 30px;
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">GLOF Monitoring</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <!-- Dropdown for GLOF Scenarios -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            GLOF Scenarios
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="historical_glof_events.php">Historical GLOF Events</a></li>
+                            <li><a class="dropdown-item" href="potential_glof_location.php">Potential GLOF Locations</a></li>
+                            <li><a class="dropdown-item" href="climate_change_impact.php">Climate Change Impact</a></li>
+                            <li><a class="dropdown-item" href="rapidicemelt_flooddynamics.php">Rapid Ice Melt & Flood Dynamics</a></li>
+                            <li><a class="dropdown-item" href="humanimpacts.php">Human Impact & Vulnerability</a></li>
+                            <li><a class="dropdown-item" href="#mitigation">Mitigation & Response</a></li>
+                            <li><a class="dropdown-item" href="#lake_stability">Glacial Lake Stability</a></li>
+                            <li><a class="dropdown-item" href="#geotechnical">Geotechnical & Hydrological Models</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown for Real-Time Monitoring -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarRealTime" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Real-Time Monitoring
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarRealTime">
+                            <li><a class="dropdown-item" href="glof_realtimedata.php">Real-Time Data</a></li>
+                            <li><a class="dropdown-item" href="live_satellite_feed.php">Satellite Feed</a></li>
+                            <li><a class="dropdown-item" href="weather_forecast.php">Weather Forecast</a></li>
+                        </ul>
+                    </li>
+                    <!-- Dropdown for Risk Assessment -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarRisk" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Risk Assessment
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarRisk">
+                            <li><a class="dropdown-item" href="flood_riskzone.php">Flood Risk Zones</a></li>
+                            <li><a class="dropdown-item" href="vulnerability_analysis.php">Vulnerability Analysis</a></li>
+                            <li><a class="dropdown-item" href="preparedness_plans.php">Preparedness Plans</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashbaord_glof.php">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact_us.php">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="support.php">Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section d-flex align-items-center justify-content-center text-center">
+        <div class="container">
+            <h1 class="display-4 text-white">Glacial Lake Outburst Flood Monitoring</h1>
+            <p class="lead text-white">Real-time simulation and risk assessment for GLOF scenarios</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>Welcome to the GLOF Monitoring System</h2>
+                <p>This website provides tools to simulate and assess the impact of Glacial Lake Outburst Floods (GLOFs). Monitor real-time data and analyze risks with advanced simulation models.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 GLOF Monitoring System. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

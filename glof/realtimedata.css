@@ -1,0 +1,39 @@
+/* Custom styles for GLOF Real-Time Data Page */
+body {
+    background-color: #e0f7fa;
+    font-family: 'Arial', sans-serif;
+}
+
+h2 {
+    font-size: 2rem;
+    color: #34495e;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-header {
+    background-color: #16a085;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.card-body {
+    background-color: #ffffff;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #2c3e50;
+}
