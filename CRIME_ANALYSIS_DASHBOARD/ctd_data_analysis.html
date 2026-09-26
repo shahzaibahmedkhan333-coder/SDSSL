@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Data Analysis</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            margin-top: 50px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .btn-custom {
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 25px;
+            padding: 10px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-custom:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.2);
+        }
+
+        .chart-container {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        .analysis-list li {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: bold;
+            color: #343a40;
+            margin-bottom: 15px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: white;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .list-group-item {
+            background-color: #f8f9fa;
+            border: none;
+            font-size: 16px;
+        }
+
+        .list-group-item:hover {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Add animation to the container */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Custom modal */
+        .modal-content {
+            border-radius: 10px;
+        }
+
+        /* Update navbar styles */
+        .navbar {
+            background-color: #343a40 !important;
+        }
+
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #f8f9fa !important;
+        }
+
+        .navbar-brand {
+            color: white !important;
+        }
+
+        .navbar-toggler-icon {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Crime Analysis</a>
+            <div id="txt" class="live-time"></div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/provincial_crime_analysis">Provincial Crime Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ctd_data_analysis">CTD Data Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-section">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <h1 class="text-center mb-4 text-primary">Crime Data Analysis</h1>
+
+        <!-- Dropdown to select CSV file -->
+        <div class="form-group">
+            <label for="csvFile">Select CSV File</label>
+            <input type="file" id="csvFile" class="form-control" />
+        </div>
+
+        <div id="analysisResult" class="mt-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Data Analysis</h3>
+                </div>
+                <div class="card-body">
+                    <ul id="analysisList" class="analysis-list list-group">
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mt-4 chart-container">
+                <div class="card-header">
+                    <h3>Visualizations</h3>
+                </div>
+                <div class="card-body">
+                    <canvas id="incidentsChart"></canvas>
+                    <canvas id="fatalitiesChart" class="mt-4"></canvas>
+                    <canvas id="injuriesChart" class="mt-4"></canvas>
+                    <canvas id="comparisonChart" class="mt-4"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for CSV upload confirmation -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="uploadModalLabel">File Uploaded Successfully!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    The CSV file has been uploaded and processed successfully. Data analysis is ready!
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function () {
+            // Handle CSV file selection
+            $('#csvFile').change(function (event) {
+                const file = event.target.files[0];
+                if (file && file.name.endsWith('.csv')) {
+                    // Parse CSV file using PapaParse
+                    Papa.parse(file, {
+                        header: true, // Treat the first row as headers
+                        skipEmptyLines: true,
+                        complete: function (results) {
+                            processData(results.data);
+                            $('#uploadModal').modal('show'); // Show modal after successful upload
+                        },
+                        error: function (error) {
+                            alert('Error parsing CSV: ' + error.message);
+                        }
+                    });
+                } else {
+                    alert('Please select a valid CSV file.');
+                }
+            });
+
+            // Function to process the CSV data
+            function processData(data) {
+                // Calculate totals and districts with issues
+                let totalIncidents = 0;
+                let totalFatalities = 0;
+                let totalInjuries = 0;
+                let zeroIncidents = [];
+                let zeroFatalities = [];
+                let zeroInjuries = [];
+                let maxIncidents = -Infinity;
+                let maxFatalities = -Infinity;
+                let maxInjuries = -Infinity;
+                let districtMaxIncidents = '';
+                let districtMaxFatalities = '';
+                let districtMaxInjuries = '';
+
+                data.forEach(row => {
+                    const incidents = parseInt(row['Total no. of Major Incidents']) || 0;
+                    const fatalities = parseInt(row['Total Fatalities']) || 0;
+                    const injuries = parseInt(row['Total Injured']) || 0;
+
+                    totalIncidents += incidents;
+                    totalFatalities += fatalities;
+                    totalInjuries += injuries;
+
+                    if (incidents === 0) zeroIncidents.push(row['Districts']);
+                    if (fatalities === 0) zeroFatalities.push(row['Districts']);
+                    if (injuries === 0) zeroInjuries.push(row['Districts']);
+
+                    if (incidents > maxIncidents) {
+                        maxIncidents = incidents;
+                        districtMaxIncidents = row['Districts'];
+                    }
+                    if (fatalities > maxFatalities) {
+                        maxFatalities = fatalities;
+                        districtMaxFatalities = row['Districts'];
+                    }
+                    if (injuries > maxInjuries) {
+                        maxInjuries = injuries;
+                        districtMaxInjuries = row['Districts'];
+                    }
+                });
+
+                // Display results in the analysis list
+                $('#analysisList').html(`
+                    <li class="list-group-item">Total Major Incidents: ${totalIncidents}</li>
+                    <li class="list-group-item">Total Fatalities: ${totalFatalities}</li>
+                    <li class="list-group-item">Total Injuries: ${totalInjuries}</li>
+                    <li class="list-group-item">Districts with 0 Incidents: ${zeroIncidents.join(', ')}</li>
+                    <li class="list-group-item">Districts with 0 Fatalities: ${zeroFatalities.join(', ')}</li>
+                    <li class="list-group-item">Districts with 0 Injuries: ${zeroInjuries.join(', ')}</li>
+                    <li class="list-group-item">District with Max Incidents: ${districtMaxIncidents}</li>
+                    <li class="list-group-item">District with Max Fatalities: ${districtMaxFatalities}</li>
+                    <li class="list-group-item">District with Max Injuries: ${districtMaxInjuries}</li>
+                `);
+
+                // Visualizations
+                const incidentData = data.map(row => parseInt(row['Total no. of Major Incidents']) || 0);
+                const fatalitiesData = data.map(row => parseInt(row['Total Fatalities']) || 0);
+                const injuriesData = data.map(row => parseInt(row['Total Injured']) || 0);
+                const districts = data.map(row => row['Districts']);
+
+                // Create incident chart
+                new Chart($('#incidentsChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: districts,
+                        datasets: [{
+                            label: 'Major Incidents',
+                            data: incidentData,
+                            backgroundColor: 'rgba(0, 123, 255, 0.5)',
+                            borderColor: 'rgba(0, 123, 255, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: { beginAtZero: true }
+                        }
+                    }
+                });
+
+                // Create fatalities chart
+                new Chart($('#fatalitiesChart'), {
+                    type: 'pie',
+                    data: {
+                        labels: districts,
+                        datasets: [{
+                            label: 'Fatalities',
+                            data: fatalitiesData,
+                            backgroundColor: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0'],
+                            borderColor: ['#ff6666', '#3399ff', '#66ff66', '#ff9966', '#6666ff'],
+                            borderWidth: 1
+                        }]
+                    }
+                });
+
+                // Create injuries chart
+                new Chart($('#injuriesChart'), {
+                    type: 'line',
+                    data: {
+                        labels: districts,
+                        datasets: [{
+                            label: 'Injuries',
+                            data: injuriesData,
+                            fill: false,
+                            borderColor: 'rgb(75, 192, 192)',
+                            tension: 0.1
+                        }]
+                    }
+                });
+
+                // Create comparison chart (Incidents vs Fatalities)
+                new Chart($('#comparisonChart'), {
+                    type: 'line',
+                    data: {
+                        labels: districts,
+                        datasets: [{
+                            label: 'Major Incidents',
+                            data: incidentData,
+                            fill: false,
+                            borderColor: 'rgb(255, 99, 132)',
+                            tension: 0.1
+                        }, {
+                            label: 'Fatalities',
+                            data: fatalitiesData,
+                            fill: false,
+                            borderColor: 'rgb(54, 162, 235)',
+                            tension: 0.1
+                        }]
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

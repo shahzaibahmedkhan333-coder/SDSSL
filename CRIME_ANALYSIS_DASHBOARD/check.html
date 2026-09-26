@@ -1,0 +1,33 @@
+const crimeData = [
+{ Year: 2012, Offence: "Murder", Punjab: 6128, Sindh: 3726, KP: 2958, Balochistan: 711, Islamabad: 120, Railways: 6, GB: 102, AJK: 95, Pakistan: 13846 },
+{ Year: 2012, Offence: "Attempt to Murder", Punjab: 7641, Sindh: 3732, KP: 2892, Balochistan: 583, Islamabad: 146, Railways: 9, GB: 163, AJK: 172, Pakistan: 15338 },
+{ Year: 2012, Offence: "Kidnapping /Abduction", Punjab: 15699, Sindh: 3077, KP: 1052, Balochistan: 386, Islamabad: 70, Railways: 6, GB: 32, AJK: 288, Pakistan: 20610 },
+{ Year: 2012, Offence: "Dacoity", Punjab: 2715, Sindh: 1341, KP: 60, Balochistan: 98, Islamabad: 22, Railways: 1, GB: 8, AJK: 12, Pakistan: 4257 },
+{ Year: 2012, Offence: "Robbery", Punjab: 12181, Sindh: 4320, KP: 134, Balochistan: 160, Islamabad: 177, Railways: 5, GB: 26, AJK: 78, Pakistan: 17081 },
+{ Year: 2012, Offence: "Burglary", Punjab: 14740, Sindh: 1680, KP: 500, Balochistan: 117, Islamabad: 245, Railways: 0, GB: 101, AJK: 255, Pakistan: 17638 },
+{ Year: 2012, Offence: "Cattle Theft", Punjab: 8115, Sindh: 630, KP: 118, Balochistan: 77, Islamabad: 43, Railways: 0, GB: 23, AJK: 40, Pakistan: 9046 },
+{ Year: 2012, Offence: "Other Theft", Punjab: 34719, Sindh: 2976, KP: 717, Balochistan: 332, Islamabad: 585, Railways: 560, GB: 71, AJK: 142, Pakistan: 40102 },
+{ Year: 2012, Offence: "Others", Punjab: 292665, Sindh: 57206, KP: 139344, Balochistan: 5745, Islamabad: 5699, Railways: 1528, GB: 1033, AJK: 4509, Pakistan: 507729 },
+{ Year: 2012, Offence: "TOTAL RECORDED CRIME", Punjab: 394603, Sindh: 78688, KP: 147775, Balochistan: 8209, Islamabad: 7107, Railways: 2115, GB: 1559, AJK: 5591, Pakistan: 645647 },
+
+{ Year: 2013, Offence: "Murder", Punjab: 5969, Sindh: 3854, KP: 3163, Balochistan: 639, Islamabad: 131, Railways: 4, GB: 73, AJK: 104, Pakistan: 13937 },
+{ Year: 2013, Offence: "Attempt to Murder", Punjab: 6935, Sindh: 3568, KP: 3146, Balochistan: 482, Islamabad: 203, Railways: 7, GB: 96, AJK: 211, Pakistan: 14648 },
+{ Year: 2013, Offence: "Kidnapping /Abduction", Punjab: 14527, Sindh: 3149, KP: 1137, Balochistan: 304, Islamabad: 112, Railways: 2, GB: 32, AJK: 288, Pakistan: 19551 },
+{ Year: 2013, Offence: "Dacoity", Punjab: 2479, Sindh: 1354, KP: 66, Balochistan: 85, Islamabad: 52, Railways: 2, GB: 2, AJK: 13, Pakistan: 4053 },
+{ Year: 2013, Offence: "Robbery", Punjab: 12609, Sindh: 4045, KP: 145, Balochistan: 189, Islamabad: 288, Railways: 4, GB: 16, AJK: 67, Pakistan: 17363 },
+
+{ Year: 2014, Offence: "Murder", Punjab: 5953, Sindh: 3225, KP: 3184, Balochistan: 615, Islamabad: 144, Railways: 4, GB: 74, AJK: 77 },
+{ Year: 2014, Offence: "Robbery", Punjab: 13808, Sindh: 3433, KP: 199, Balochistan: 202, Islamabad: 379, Railways: 3, GB: 18, AJK: 65 },
+{ Year: 2015, Offence: "Murder", Punjab: 4422, Sindh: 1907, KP: 2496, Balochistan: 412, Islamabad: 116, Railways: 3, GB: 54, AJK: 76 },
+{ Year: 2015, Offence: "Robbery", Punjab: 11871, Sindh: 2595, KP: 234, Balochistan: 186, Islamabad: 209, Railways: 1, GB: 16, AJK: 52 },
+{ Year: 2016, Offence: "Murder", Punjab: 3995, Sindh: 1445, KP: 2481, Balochistan: 382, Islamabad: 94, Railways: 2, GB: 67, AJK: 50 },
+
+// Add remaining years and offenses similarly...
+
+{ Year: 2017, Offence: "Murder", Punjab: 3914, Sindh: 1409, KP: 2361, Balochistan: 325, Islamabad: 84, Railways: 6, GB: 61, AJK: 75, Pakistan: 8235 },
+{ Year: 2017, Offence: "Attempt to Murder", Punjab: 4440, Sindh: 1644, KP: 2641, Balochistan: 333, Islamabad: 163, Railways: 5, GB: 94, AJK: 179, Pakistan: 9499 },
+{ Year: 2017, Offence: "Kidnapping /Abduction", Punjab: 13558, Sindh: 2927, KP: 1197, Balochistan: 248, Islamabad: 99, Railways: 7, GB: 48, AJK: 279, Pakistan: 18363 },
+{ Year: 2017, Offence: "Dacoity", Punjab: 602, Sindh: 572, KP: 45, Balochistan: 38, Islamabad: 16, Railways: 1, GB: 4, AJK: 2, Pakistan: 1280 },
+{ Year: 2017, Offence: "Robbery", Punjab: 9385, Sindh: 2364, KP: 276, Balochistan: 185, Islamabad: 195, Railways: 4, GB: 15, AJK: 34, Pakistan: 12458 },
+{ Year: 2017, Offence: "TOTAL RECORDED CRIME", Punjab: 405845, Sindh: 70273, KP: 180830, Balochistan: 9492, Islamabad: 7136, Railways: 1528, GB: 1736, AJK: 7085, Pakistan: 683925 }
+];

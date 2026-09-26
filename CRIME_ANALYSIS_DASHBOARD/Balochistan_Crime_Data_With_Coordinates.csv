@@ -1,0 +1,7 @@
+Year,District,Type of Crime,Number of Cases,Solved Cases,Unsolved Cases,Latitude,Longitude
+2021,Quetta,Murder,120,85,35,30.1798,66.975
+2021,Gwadar,Kidnapping,45,30,15,25.1266,62.322
+2021,Khuzdar,Theft,200,150,50,27.8106,66.6101
+2022,Quetta,Murder,130,90,40,30.1798,66.975
+2022,Gwadar,Kidnapping,50,35,15,25.1266,62.322
+2022,Khuzdar,Theft,210,160,50,27.8106,66.6101

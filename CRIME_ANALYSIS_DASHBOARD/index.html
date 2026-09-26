@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crime Analysis - EDA Dashboard</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #1e3c72, #2a5298);
+            color: white;
+        }
+        .navbar {
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            font-size: 1.6rem;
+            color: #ffc107 !important;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+            transition: 0.3s;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ffc107 !important;
+            transform: scale(1.1);
+        }
+        .hero {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 3rem 1rem;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        .live-time {
+            font-size: 1.2rem;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 8px;
+        }
+        .menu-options {
+            margin-top: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            transition: 0.4s;
+        }
+        .menu-options:hover {
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .btn-primary {
+            background: #ffc107;
+            border: none;
+            transition: 0.3s;
+            font-size: 1.1rem;
+        }
+        .btn-primary:hover {
+            background: #e0a800;
+            transform: scale(1.05);
+        }
+        .results {
+            animation: fadeInUp 1s ease-in-out;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            margin-top: 30px;
+            font-size: 0.9rem;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body onload="startTime()">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Crime Analysis</a>
+            <div id="txt" class="live-time"></div> 
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/provincial_crime_analysis">Provincial Crime Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ctd_data_analysis">CTD Data Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/hotspot_analysis">Hotspot Analysis</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about-section">About</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container mt-4">
+        <div class="hero">
+            <h1>Crime Analysis Dashboard</h1>
+            <p>Upload your CSV file to generate insights and interactive charts.</p>
+        </div>
+    </div>
+
+    <!-- Upload Section -->
+    <div class="container menu-options mt-5">
+        <h2 class="text-center">Upload CSV File</h2>
+        <div class="text-center mt-4">
+            <input type="file" id="csvFile" accept=".csv" class="form-control w-50 mx-auto">
+            <button class="btn btn-primary mt-3" onclick="analyzeFile()">Analyze</button>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div class="container mt-5">
+        <h2 class="text-center">EDA Results</h2>
+        <div id="eda-results-content" class="results mt-3"></div>
+    </div>
+
+    <!-- About Section -->
+    <div class="container mt-5" id="about-section">
+        <h2 class="text-center">About</h2>
+        <p class="text-center">
+            This dashboard offers an interactive way to analyze crime data with visualizations and insights.
+        </p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2025 Crime Analysis Dashboard | Built with Bootstrap & Love ❤️</p>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        function analyzeFile() {
+            const fileInput = document.getElementById('csvFile');
+            const formData = new FormData();
+            formData.append("csvFile", fileInput.files[0]);
+
+            fetch('/analyze', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                const resultsDiv = document.getElementById('eda-results-content');
+                resultsDiv.innerHTML = "";
+
+                if (data.error) {
+                    resultsDiv.innerHTML = `<div class="alert alert-danger">${data.error}</div>`;
+                    return;
+                }
+
+                if (data.summary_stats) resultsDiv.innerHTML += `<h3>Summary Statistics</h3><div>${data.summary_stats}</div>`;
+                if (data.bar_chart) resultsDiv.innerHTML += `<h3>Bar Chart</h3><img src="data:image/png;base64,${data.bar_chart}" class="img-fluid">`;
+                if (data.histogram) resultsDiv.innerHTML += `<h3>Histogram</h3><img src="data:image/png;base64,${data.histogram}" class="img-fluid">`;
+                if (data.heatmap) resultsDiv.innerHTML += `<h3>Correlation Heatmap</h3><img src="data:image/png;base64,${data.heatmap}" class="img-fluid">`;
+            })
+            .catch(error => console.error('Error:', error));
+        }
+
+        function startTime() {
+            document.getElementById('txt').innerHTML = new Date().toLocaleTimeString();
+            setTimeout(startTime, 1000);
+        }
+    </script>
+</body>
+</html>
