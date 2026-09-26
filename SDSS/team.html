@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Team - Research Lab</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+  <style>
+    body {
+      background: linear-gradient(to right, #1f1c2c, #928dab);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #fff;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 12px 20px;
+      transition: all 0.4s ease;
+    }
+    .navbar-nav .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+    .navbar-nav .nav-link:hover {
+      color: #f8d90f !important;
+      transform: translateY(-3px);
+    }
+
+    /* Team Section */
+    .team-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .team-section h2 {
+      font-size: 2.8rem;
+      margin-bottom: 50px;
+      font-weight: bold;
+      color: #f8d90f;
+    }
+
+    .team-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      transition: 0.4s ease;
+      overflow: hidden;
+      position: relative;
+    }
+    .team-card img {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 15px;
+      transition: transform 0.4s ease;
+    }
+    .team-card:hover img {
+      transform: scale(1.1);
+    }
+    .team-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    }
+
+    .team-info {
+      margin-top: 20px;
+    }
+    .team-info h4 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .team-info p {
+      font-size: 0.95rem;
+      color: #ddd;
+    }
+
+    /* Social Icons */
+    .social-icons {
+      margin-top: 15px;
+    }
+    .social-icons a {
+      color: #fff;
+      font-size: 18px;
+      margin: 0 8px;
+      transition: all 0.3s ease;
+    }
+    .social-icons a:hover {
+      color: #f8d90f;
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand text-warning fw-bold" href="#">Research Lab</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon text-white"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="INDEX.HTML">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="training, survey & workshop.html">Workshops Surveys & Training </a></li>
+          <li class="nav-item"><a class="nav-link" href="project&dashboard.html">Projects & Dashboards</a></li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="SDSSMAPS.html">SDSS Maps</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Team Section -->
+  <section class="team-section container">
+    <h2>Meet Our Team</h2>
+    <div class="row g-4">
+      
+      <!-- Team Member 1 -->
+      <div class="col-md-4">
+        <div class="team-card">
+          <img src="niamatphoto.jpg" alt="Team Member">
+          <div class="team-info">
+            <h4>Mr. Niamat Ullah</h4>
+            <p>Research Lead (GIS & Remote Sensing Expert)</p><p>Niamat Ullah received the M.Phil. degree in geospatial sciences (GIS & RS) from the National Center of Excellence in Geology (NCEG), the University of Peshawar, Pakistan, in 2023.
+He is currently with the SDSS Lab, NCGSA, Pakistan. He is the author of dozens of scientific research papers, books, and book chapters. His research interests include GIS, RS, natural hazards (floods, droughts), hydrology, climate change, and physical geography.</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 2 -->
+      <div class="col-md-4">
+        <div class="team-card">
+          <img src="ahmedshahprofilephoto.jpg" alt="Team Member">
+          <div class="team-info">
+            <h4>Syed Ahmed Shah</h4>
+            <p> TEAM LEAD Specialist in Geospatial Systems & Remote Sensing</p><br>The research emphasizes innovative technological solutions for environmental sustainability and industrial advancement, with expertise in IoT, Industry 4.0, and ICT-based initiatives. Key work includes climate change mitigation, WSN deployment, and data-driven analysis using GEE, GIS, RS, and QGIS to support sustainability and informed decision-making.
+
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-researchgate"></i></a>
+              <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Team Member 3 -->
+      <div class="col-md-4">
+        <div class="team-card">
+          <img src="shahzaibprofilephoto.jpg" alt="Team Member">
+          <div class="team-info">
+            <h4>SHAHZAIB KHAN</h4>
+            <p>LAB TECHNICIAN, FULL STACK DEVELOPER & DATA ANALYST</p><br>Data Science for extracting insights from complex datasets, Machine Learning for building intelligent predictive models, and Full Stack Development for designing and deploying scalable web applications. It further integrates Creative Design Solutions using Adobe Photoshop, Illustrator, and Canva to deliver visually compelling and user-centric digital experiences
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+       <!-- Team Member 4 -->
+      <div class="col-md-4">
+        <div class="team-card">
+          <img src="ayesha_profile_photo_team.jpg" alt="Team Member">
+          <div class="team-info">
+            <h4>Bibi Ayesha Kasi</h4>
+            <p>I am working on scientific research that combines GIS and spatial analysis for environmental monitoring with heavy metal assessment in soil, water, and vegetables using Atomic Absorption Spectroscopy (AAS). Additionally, it encompasses time-series analysis, Land Use/Land Cover (LULC) studies, and air quality monitoring through Google Earth Engine (GEE) to support data-driven research, decision-making, problem-solving, and critical thinking.
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      <!-- Team Member 3 -->
+      <div class="col-md-4">
+        <div class="team-card">
+          <img src="khalidphoto.png" alt="Team Member">
+          <div class="team-info">
+            <h4>KHALID SHAH</h4>
+            <p>My Research Area focuses on leveraging Generative AI and Agentic AI frameworks to enhance geospatial data science for decision support systems. I develop intelligent agents capable of automating complex workflows, integrating LLMs, and enabling adaptive, context-aware problem-solving for real-world spatial challenges.</p>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- Team Member 3 -->
+      <div class="col-md-4">
+        <div class="team-card">
+          <img src="shahzaibprofilephoto.jpg" alt="Team Member">
+          <div class="team-info">
+            <h4>SHAHZAIB KHAN</h4>
+            <p>LAB TECHNICIAN, FULL STACK DEVELOPER & DATA ANALYST</p><br>Data Science for extracting insights from complex datasets, Machine Learning for building intelligent predictive models, and Full Stack Development for designing and deploying scalable web applications. It further integrates Creative Design Solutions using Adobe Photoshop, Illustrator, and Canva to deliver visually compelling and user-centric digital experiences
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-facebook"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

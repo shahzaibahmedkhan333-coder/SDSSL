@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SDSS Lab - Projects & Dashboards</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom Styles -->
+  <style>
+    body {
+      background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                  url('https://source.unsplash.com/1600x900/?technology,data,ai') no-repeat center center/cover;
+      color: white;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding-top: 80px; /* Space for sticky navbar */
+    }
+
+    /* Glassy Navbar */
+    .navbar {
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.1) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    .navbar .nav-link {
+      color: #fff !important;
+      font-weight: 500;
+      margin: 0 10px;
+      transition: 0.3s;
+    }
+    .navbar .nav-link:hover {
+      color: #00d4ff !important;
+    }
+
+    /* Card Styling */
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 20px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    }
+    .card img {
+      border-radius: 20px 20px 0 0;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    h2 {
+      font-weight: bold;
+      margin-bottom: 30px;
+      color: #00d4ff;
+      text-shadow: 0px 0px 8px rgba(0, 212, 255, 0.6);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Glassy Sticky Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bold text-white" href="#">SDSS Lab</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
+              data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" 
+              aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="INDEX.HTML">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#research">Research</a></li>
+          <li class="nav-item"><a class="nav-link" href="training, survey & workshop.html">Workshops Surveys & Training </a></li>
+          <li class="nav-item"><a class="nav-link" href="project&dashboard.html">Projects & Dashboards</a></li>
+          <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
+          <li class="nav-item"><a class="nav-link" href="SDSSMAPS.html">SDSS Maps</a></li>
+          <li class="nav-item"><a class="nav-link" href="team.html">Team</a></li>
+          <li class="nav-item"><a class="nav-link" href="gallery.html">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Projects & Dashboards Section -->
+  <div class="container text-center">
+    <h2>Our Projects & Dashboards</h2>
+    <div class="row g-4">
+      
+      <!-- Project 1 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="GLOF.jpg" class="card-img-top" alt="GLOF Project">
+          <div class="card-body">
+            <h5 class="card-title">GLOF Risk Assessment</h5>
+            <p class="card-text">Glacial Lake Outburst Flood (GLOF) risk assessment and decision support dashboard for vulnerable areas.</p>
+            <a href="#" class="btn btn-info">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="crime.jpg" class="card-img-top" alt="Crime Dashboard">
+          <div class="card-body">
+            <h5 class="card-title">Crime Analysis Dashboard</h5>
+            <p class="card-text">A GIS-enabled dashboard to analyze crime data, hotspots, and predictive crime mapping.</p>
+            <a href="#" class="btn btn-info">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="forestwatch.jpg" class="card-img-top" alt="Crime Dashboard">
+          <div class="card-body">
+            <h5 class="card-title">Crime Analysis Dashboard</h5>
+            <p class="card-text">FOREST WATCH.</p>
+            <a href="#" class="btn btn-info">View Project</a>
+          </div>
+        </div>
+      </div>
+      <!-- Project 4 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="waterqualityassessment.jpg" class="card-img-top" alt="WATER QUALITY ASSESSMENT">
+          <div class="card-body">
+            <h5 class="card-title">WATER QUALITY ASSESSMENT</h5>
+            <p class="card-text">WATER QUALITY ASSESSMENT.</p>
+            <a href="#" class="btn btn-info">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="col-md-4">
+        <div class="card h-100">
+          <img src="forestwatch.jpg" class="card-img-top" alt="Crime Dashboard">
+          <div class="card-body">
+            <h5 class="card-title">Crime Analysis Dashboard</h5>
+            <p class="card-text">FOREST WATCH.</p>
+            <a href="#" class="btn btn-info">View Project</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
